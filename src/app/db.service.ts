@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Car } from './model/Car';
 
-const endpoint = 'http://localhost:8080/formacion/api/v1/';
+//const endpoint = 'http://localhost:8080/formacion/api/v1/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -16,8 +16,34 @@ export class DbService {
 
   constructor(private http: HttpClient) { }
 
-   apiUrl: string = 'formacion/api/v1/cars';
+   baseUrl: string = 'formacion/api/v1/cars';
 
+
+
+  getCars() {
+    return this.http.get<Car>(this.baseUrl,httpOptions);
+  }
+
+  getCarById(id: String) {
+    return this.http.get<Car>(this.baseUrl + '/' + id,httpOptions);
+  }
+
+  createCar(car: Car) {
+    console.log(car);
+    return this.http.post(this.baseUrl, car);
+  }
+
+  updateCar(car: Car) {
+    return this.http.put(this.baseUrl + '/' + car.id,car);
+  }
+
+  deleteCar(id: String) {
+    return this.http.delete(this.baseUrl + '/' + id);
+  }
+}
+
+
+/*
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
@@ -67,28 +93,5 @@ export class DbService {
       catchError(this.handleError<Car>('deleteCar'))
     );
     }
-  }
-
-/*
-  getCars() {
-    return this.http.get<Car>(this.baseUrl);
-  }
-
-  getCarById(id: String) {
-    return this.http.get<Car>(this.baseUrl + '/' + id);
-  }
-
-  createCar(car: Car) {
-    console.log(car);
-    return this.http.post(this.baseUrl, car);
-  }
-
-  updateCar(car: Car) {
-    return this.http.put(this.baseUrl + '/' + car.id,car);
-  }
-
-  deleteCar(id: String) {
-    return this.http.delete(this.baseUrl + '/' + id);
-  }
-  */
+}*/
 
