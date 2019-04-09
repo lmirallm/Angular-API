@@ -1,9 +1,10 @@
 import { Component, OnInit, PipeTransform } from '@angular/core';
 import { Car } from './model/car';
 import { DbService } from './db.service';
-import { DecimalPipe, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 
@@ -11,11 +12,11 @@ import { startWith, map } from 'rxjs/operators';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [DecimalPipe]
+  providers: [DatePipe]
 })
 export class AppComponent implements OnInit {
   cars: any;
-  cars$ : any;
+  cars$ : Observable<Car[]>;
   filter = new FormControl('');
   constructor( private pipe: DatePipe,private data: DbService) {
   
@@ -55,11 +56,11 @@ export class AppComponent implements OnInit {
     );
   }
   
-  search(text: String, pipe: PipeTransform): Car[] {
+  search(text: string, pipe: PipeTransform): Car[] {
     return this.cars.filter(car => {
       const term = text.toLowerCase();
-      return pipe.transform(car.registration).includes(term)
-          || pipe.transform(car.brand).includes(term);
+      return pipe.transform(car.registration).toLowerCase().includes(term)
+          || car.brand.toLowerCase().includes(term);
     });
   }
 }

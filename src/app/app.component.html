@@ -1,6 +1,6 @@
 <div class="container bg-dark">
-    <form>
-        <div class="form-group form-inline">
+    <form class="bg-white mt-2">
+        <div class="form-group form-inline ">
             Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
         </div>
       </form>
@@ -14,7 +14,7 @@
                 </tr>
                 </thead>
                 <tbody *ngIf="cars">
-                <tr *ngFor="let car of cars" (click)="openForEdit(car)" class="bg-white">
+                <tr *ngFor="let car of cars$ | async" (click)="openForEdit(car)" class="bg-white">
                   <th scope="row">{{ car.id }}</th>
                   <td><ngb-highlight [result]="car.brand" [term]="filter.value"></ngb-highlight></td>
                   <td>{{ car.country }}</td>
