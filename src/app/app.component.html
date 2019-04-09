@@ -30,12 +30,13 @@
                 <p class="p-2 ">Car Details</p>
             </div>
             <div class="form-group m-2">
-                <input type="text" [(ngModel)]="selectedCar.brand" placeholder="Brand" class="form-control">
+                <input type="text" [(ngModel)]="selectedCar.brand" placeholder="Brand" required class="form-control  required" >
+                
             </div>
-            <div class="form-group m-2">
-                <input type="text" [(ngModel)]="selectedCar.country" placeholder="Country" class="form-control">
+            <div class="form-group m-2 ">
+                <input type="text" [(ngModel)]="selectedCar.country" placeholder="Country" required class="form-control required">
             </div>
-            <div class="form-group m-2">
+            <div class="form-group m-2 ">
                 <input type="datetime-local" value="2013-10-24T20:36:00" step="1" name="fecha"
                     [(ngModel)]="selectedCar.registration" placeholder="Registration" class="form-control">
             </div>
