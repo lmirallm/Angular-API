@@ -18,7 +18,7 @@ export class DbService {
   baseUrl: string = 'formacion/api/v1/cars';
 
   getCars() {
-    return this.http.get<Car>(this.baseUrl);
+    return this.http.get<Car[]>(this.baseUrl);
   }
 
   getCarById(id: String) {
