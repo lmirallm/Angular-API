@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
   search(text: string, pipe: PipeTransform): Car[] {
     return this.cars.filter(car => {
       const term = text.toLowerCase();
-      return pipe.transform(car.registration).toLowerCase().includes(term)
+      return pipe.transform(car.registration , 'short').toString().toLowerCase().includes(term)
           || car.brand.toLowerCase().includes(term);
     });
   }

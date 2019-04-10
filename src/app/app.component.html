@@ -18,7 +18,7 @@
                   <th scope="row">{{ car.id }}</th>
                   <td><ngb-highlight [result]="car.brand" [term]="filter.value"></ngb-highlight></td>
                   <td>{{ car.country }}</td>
-                  <td><ngb-highlight [result]="car.registration  | date:'yyyy-MM-dd HH:mm:ss'" [term]="filter.value"></ngb-highlight></td>
+                  <td><ngb-highlight [result]="car.registration | date:'short'"   [term]="filter.value"></ngb-highlight></td>
                 </tr>
                 </tbody>
               </table>
