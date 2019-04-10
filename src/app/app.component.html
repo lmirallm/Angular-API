@@ -1,7 +1,7 @@
 <div class="container bg-dark">
     <form class="bg-white mt-2">
         <div class="form-group form-inline ">
-            Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+            Search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
         </div>
       </form>
         <table class="table table-striped table-hover mt-4"  >
@@ -30,17 +30,18 @@
                 <p class="p-2 ">Car Details</p>
             </div>
             <div class="form-group m-2">
-                <input type="text" [(ngModel)]="selectedCar.brand" placeholder="Brand" class="form-control">
+                <input type="text" [(ngModel)]="selectedCar.brand" placeholder="Brand" required class="form-control  required" >
+                
             </div>
-            <div class="form-group m-2">
-                <input type="text" [(ngModel)]="selectedCar.country" placeholder="Country" class="form-control">
+            <div class="form-group m-2 ">
+                <input type="text" [(ngModel)]="selectedCar.country" placeholder="Country" required class="form-control required">
             </div>
-            <div class="form-group m-2">
+            <div class="form-group m-2 ">
                 <input type="datetime-local" value="2013-10-24T20:36:00" step="1" name="fecha"
                     [(ngModel)]="selectedCar.registration" placeholder="Registration" class="form-control">
             </div>
             <div class="form-group m-2">
-                <input type="text" [(ngModel)]="selectedCar.id" placeholder="Id" class="form-control">
+                <input type="text" [(ngModel)]="selectedCar.id" disabled placeholder="Id" class="form-control">
             </div>
             <div class="form-group m-2">
                 <input type="text" [(ngModel)]="selectedCar.created_at" disabled placeholder="Created at" class="form-control">

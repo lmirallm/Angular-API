@@ -2,10 +2,9 @@ import { Component, OnInit, PipeTransform } from '@angular/core';
 import { Car } from './model/car';
 import { DbService } from './db.service';
 import { DatePipe } from '@angular/common';
-import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -21,10 +20,11 @@ export class AppComponent implements OnInit {
   constructor( private pipe: DatePipe,private data: DbService) {
   
    }
-
+   validatingForm: FormGroup;
   ngOnInit() {
     this.data.getCars().subscribe(data => { this.cars = data });
     this.orderCall();
+    
   }
   selectedCar: Car = new Car();
   get() {
